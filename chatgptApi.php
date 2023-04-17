@@ -3,7 +3,7 @@ $text=$_GET['text'];
 $id=$_GET['id'];
 $key=$_GET['apikey'];
 if($_GET['apikey']==""){
-$key="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";//只需要改这一个地方
+$key="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";//只需要改这一个地方
 }
 
 
