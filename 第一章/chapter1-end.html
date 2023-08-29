@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Fullscreen with Mute and Skip</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        video {
+            position: fixed;   /* 位置设为固定 */
+            top: 50%;          /* 从顶部向下 50% 的位置开始 */
+            left: 50%;         /* 从左边向右 50% 的位置开始 */
+            transform: translate(-50%, -50%); /* 使用转换偏移 -50% 的宽度和高度，确保视频居中 */
+            max-width: 100vw;  /* 视频的最大宽度是视口宽度的 100% */
+            max-height: 100vh; /* 视频的最大高度是视口高度的 100% */
+            width: 100vw;       /* 宽度自动 */
+            height: 100vh;      /* 高度自动 */
+            object-fit: contain; /* 保证视频内容适应其容器大小，不会裁剪或失真 */
+        }
+
+        #muteButton, #skipButton {
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.2s;
+            position: fixed;
+        }
+        #muteButton:hover, #skipButton:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        #muteButton {
+            right: 10px;
+            bottom: 10px;
+        }
+        #skipButton {
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+<video id="fullscreenVideo" autoplay muted>
+    <source src="chapter1-end.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<!-- Mute Button -->
+<button id="muteButton">静音</button>
+
+<!-- Skip Button -->
+<button id="skipButton">跳过</button>
+
+<script>
+    const videoElement = document.getElementById('fullscreenVideo');
+    const muteButton = document.getElementById('muteButton');
+    const skipButton = document.getElementById('skipButton');
+    videoElement.addEventListener('ended', function() {
+        window.location.href = "chapter2.html";
+    });
+    muteButton.addEventListener('click', function() {
+        if (videoElement.muted) {
+            videoElement.muted = false;
+            muteButton.innerHTML = "有声音";
+        } else {
+            videoElement.muted = true;
+            muteButton.innerHTML = "静音";
+        }
+    });
+
+    skipButton.addEventListener('click', function() {
+        window.location.href = "chapter2.html";
+    });
+
+    videoElement.addEventListener('play', function() {
+        if (videoElement.requestFullscreen) {
+            videoElement.requestFullscreen();
+        } else if (videoElement.mozRequestFullScreen) {
+            videoElement.mozRequestFullScreen();
+        } else if (videoElement.webkitRequestFullscreen) {
+            videoElement.webkitRequestFullscreen();
+        } else if (videoElement.msRequestFullscreen) {
+            videoElement.msRequestFullscreen();
+        }
+    });
+</script>
+</body>
+</html>
+

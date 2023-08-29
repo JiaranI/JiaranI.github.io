@@ -1,0 +1,61 @@
+body {
+	background-image: url(img/宝盒.jpg);
+	background-repeat: no-repeat;
+	background-size: 125% auto;
+	background-attachment: fixed;
+	background-position: center;
+	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+/*
+STYLING FOR AREA ABOVE GAME BOARD
+*/
+/*
+STYLING FOR GAME BOARD
+*/
+.container {
+	width: 400px;
+	margin: 0 auto;
+}
+
+.board {
+	position: absolute;
+	background-color: rgb(15, 176, 235);
+	border-radius: 4px;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gamerow {
+	height: 100px;
+}
+
+.gamerow:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.gamesquare {
+	display: block;
+	margin-right: 15px;
+	float: left;
+	border-radius: 3px;
+}
+
+.form,
+.comments {
+	display: block;
+	clear: both;
+	margin: 0 auto;
+	width: 600px;
+}
+
+code {
+	white-space: normal;
+}
+
+.comments_warp {
+	margin-top: 650px;
+}

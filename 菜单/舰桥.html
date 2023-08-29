@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>舰桥</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      background-image: url('../images/舰桥.png'); /* 替换为你的图片路径 */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .transparent-button {
+      position: absolute;
+      /* 下面是按钮的位置属性，你可以根据需要进行调整 */
+      top: 63%;  /* 从上面开始的位置，例如：50% 表示从顶部到按钮的上边缘的距离是容器高度的一半 */
+      left: 38%; /* 从左边开始的位置 */
+      transform: translate(-50%, -50%); /* 这是为了确保按钮居中于指定的top和left值 */
+      background: transparent;
+      border: none;
+      color: #171313;
+      font-size: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      /* 如果需要加边框，可以取消以下两行注释 */
+      /* border: 1px solid white; */
+      /* border-radius: 5px; */
+    }
+
+    .transparent-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none; /* 去除链接的下划线 */
+      font-size: 16px;
+      transition: background-color 0.2s; /* 过渡效果 */
+    }
+    .back-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+<a href="../index.html" class="back-button">返回</a>
+<div class="container">
+  <a href="星图.html" class="transparent-button">任务</a>
+</div>
+</body>
+</html>

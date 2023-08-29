@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>示例页面</title>
+    <style>
+        /* 使背景图片铺满整个页面 */
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('../images/星图.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 使用flexbox布局来一行排列七个图片 */
+        .image-container div {
+            cursor: pointer; /* 设置鼠标在图片上显示为手指样式，表示可点击 */
+            position: relative;
+            display: inline-block; /* 使 div 行内显示 */
+        }
+
+        .image-container img {
+            height: 200px;
+        }
+
+        /* 为图片添加描述框 */
+        .image-container div::after {
+            content: attr(data-desc); /* 使用HTML的data属性来获取图片的描述 */
+            position: absolute;
+            display: none; /* 默认情况下不显示描述框 */
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            /*transform: translate(-50%, -100%);*/
+            width:250px;
+            /*white-space: normal; /*描述文本换行情况*/
+            white-space: pre-line;
+            font-size: 20px;
+            top: 50%;              /* 将伪元素放在div的底部 */
+            left: 50%;              /* 保持水平居中 */
+            transform: translateX(-50%); /* 水平居中的调整 */
+            /*width:150px;*/
+            /*word-wrap:break-word;*/
+        }
+
+        /* 当悬停在图片上时显示描述框 */
+        .image-container div:hover::after {
+            display: block;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* 去除链接的下划线 */
+            font-size: 16px;
+            transition: background-color 0.2s; /* 过渡效果 */
+        }
+        .back-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+<a href="舰桥.html" class="back-button">返回</a>
+<div class="image-container">
+    <!-- 这里只给出了三个示例，您可以按需增加 -->
+    <div data-desc="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;莫比亚斯基金会认为另一个神器，在蒙莱斯星球上，可能有星灵在守护它，是一群狂热分子，称自己为塔达林。&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;蒙莱斯星球数世纪前就被遗弃——人们对选择留在当地的极少数星灵更是知之甚少，这群塔达林和他们的上古圣殿对人类研究者而言至今仍是未解之谜" onclick="window.location.href='url1.com'">
+        <img src="../images/星球图片/蒙莱斯.png">
+    </div>
+    <div data-desc="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;莫比亚斯向此处派去了一个专家小组，不过两天前就失去联系了。&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;席尔星球上的所有生命痕迹都早已消逝，挖掘出的古物显示，该星球上发达的外星文明其实是在一夜之间消亡殆尽。" onclick="window.location.href='url1.com'">
+        <img src="../images/星球图片/席尔.png">
+    </div>
+    <div data-desc="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;看来刀锋女王已经知道，是谁在资助我们偷取神器了，莫比亚斯的首脑纳鲁德博士称异虫正在袭击泰莱多尔的神器研究园区&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为旧联邦首批具有”规划性“的星球之一，泰拉多尔卫八以其浓郁的学术氛围，有序的街道和整洁的园区而闻名星系" onclick="window.location.href='url1.com'">
+        <img src="../images/星球图片/泰拉多尔卫八.png">
+    </div>
+    <div data-desc="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;莫比亚斯声称，找到了另一块神器，在一个叫提丰的小星球上。&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这一遥远的星系极为古老，其恒星稳定性每况愈下足以证明这一点，这样的环境加上贫乏的矿产资源，使得提丰总是无法获得移民的青睐，尽管如此，一支规模相当庞大的塔达林远征军却来到了此地。" onclick="window.location.href='url1.com'">
+        <img src="../images/星球图片/提丰.png">
+    </div>
+    <div data-desc="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最终的行动，进攻查尔星球的虫群主巢，一旦开始，就不能回头。请确定你已经准备完全，这是命运的一战。&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;灰烬星球查尔是科普鲁兴趣的虫群行动基地，在遍布火山的星球表面，分布着星罗棋布的潮群和错综复杂的地下坑道，里面有着数以百万计的凶恶异虫。" onclick="window.location.href='url1.com'">
+        <img src="../images/星球图片/查尔.png">
+    </div>
+    <div data-desc="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来自阿格瑞尔的求救信息&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由前地球知名专家伯纳德汉森博士创立的阿格瑞尔移民地，一直以来都是帝国主要的植物和野生动物保护区" onclick="window.location.href='url1.com'">
+        <img src="../images/星球图片/阿格瑞尔.png">
+    </div>
+    <div data-desc="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加布里埃尔托什带来消息，红石星上发现了昂贵的黄金矿，但由于异虫入侵，那的人不得不丢下这些身外之物跑路，”你想赚钱，就来红石找我吧“——托什。&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;红石星球上的矿脉开采权，在泰伦行会大战开始前九十各探矿行会的争夺焦点。" onclick="window.location.href='url1.com'">
+        <img src="../images/星球图片/红石星球.png">
+    </div>
+    <!-- ... 根据需要增加其他图片 -->
+</div>
+</body>
+</html>

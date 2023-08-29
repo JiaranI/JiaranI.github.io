@@ -1,0 +1,86 @@
+
+:root {
+    /* --- 文本框样式 --- */
+    /* 背景颜色 */
+    --text-box-bg: rgba(0, 0, 0, 0.5);
+    /* 宽度 */
+    /* 高度 */
+    --text-box-height: 100px;
+    /* 距离左侧的距离 */
+    --text-box-left: 20px;
+    --text-box-right:20px;
+    /* 距离底部的距离 */
+    --text-box-bottom: 50px;
+    /* 内边距 */
+    --text-box-padding: 10px;
+    /* 圆角大小 */
+    --text-box-border-radius: 10px;
+
+    /* --- 图片样式 --- */
+    /* 图片宽度 */
+    --img-width: 300px;
+    /* 图片高度 */
+    --img-height: 300px;
+    /* 距离左侧的距离 */
+    --img-left: 20px;
+    /* 距离底部的距离 (考虑到图片和文本框可能重叠，您可能希望调整这一值) */
+    --img-bottom:200px;
+    /* 文字样式变量 */
+    --font-size: 30px;         /* 文字大小 */
+    --font-color: #ffffff;    /* 文字颜色 */
+    --font-family: 'Arial';   /* 文字字体 */
+    --font-weight: normal;    /* 文字粗细：normal, bold, bolder, lighter, 100-900 */
+    --line-height: 1.5;       /* 行间距 */
+    --text-shadow: none;      /* 文字阴影 */
+}
+
+#textWrapper {
+    background-color: var(--text-box-bg);
+    /*width: var(--text-box-width);*/
+    height: var(--text-box-height);
+    position: absolute;
+    left: var(--text-box-left);
+    right: var(--text-box-right);
+    bottom: var(--text-box-bottom);
+    padding: var(--text-box-padding);
+    border-radius: var(--text-box-border-radius);
+    font-size: var(--font-size);
+    color: var(--font-color);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    line-height: var(--line-height);
+    text-shadow: var(--text-shadow);
+
+}
+#speakerImage {
+    /* 定义图片的宽度和高度 */
+    width: var(--img-width);
+    height: var(--img-height);
+    position: absolute; /* 使用绝对定位 */
+    left: var(--img-left);
+    bottom: var(--img-bottom);
+}
+body {
+    /* 设置背景图片 */
+    /*background-image: url('images/background.jpg');*/
+
+    /* 设置背景图像的大小，cover表示尽可能地放大背景图像，以覆盖整个容器 */
+    background-size: cover;
+
+    /* 设置背景图像的位置 */
+    background-position: center center;
+
+    /* 设置背景图像不重复 */
+    background-repeat: no-repeat;
+
+    /* 如果您希望背景图像随内容滚动，使用default值；如果您希望背景图像固定在视口，使用fixed值 */
+    background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100vh;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+}
+

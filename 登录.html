@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <!-- 设置文档字符集为UTF-8 -->
+    <meta charset="UTF-8">
+
+    <!-- 设置视口属性，确保页面在各种设备上都能正确响应式地显示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 设置网页标题为“登录界面” -->
+    <title>登录界面</title>
+
+    <!-- 内联CSS样式开始 -->
+    <style>
+        /* body是整个页面的样式，设置字体、背景颜色以及登录容器的居中显示 */
+        body {
+            font-family: Arial, sans-serif; /* 使用Arial字体，如果不可用则使用sans-serif字体系列 */
+            background-color: rgba(245, 245, 245, 0); /* 设置背景颜色 */
+            background-image: url('background.jpg'); /* 设置背景图片 */
+            background-size: cover; /* 背景图片覆盖整个元素 */
+            background-repeat: no-repeat; /* 确保背景图片不重复 */
+            background-position: center center; /* 保持背景图片始终位于视口中心 */
+            display: flex; /* 使用弹性布局 */
+            justify-content: center; /* 水平居中内容 */
+            align-items: center; /* 垂直居中内容 */
+            height: 100vh; /* 高度设为100%的视口高度 */
+        }
+
+        /* 定义登录容器样式 */
+        .login-container {
+            background-color: rgb(23, 19, 19,0.3); /* 设置背景颜色为白色 */
+            padding: 20px; /* 内部间距为20px */
+            border-radius: 5px; /* 边角为5px的圆角 */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 添加一个轻微的阴影效果 */
+            width: 40%; /* 定义容器宽度为300px */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 300px; /* 或者你需要的任何高度 */
+
+        }
+
+        /* 输入框的公共样式 */
+        .login-input {
+            width: 100%; /* 输入框宽度设为100% */
+            height: 20%;
+            padding: 10px; /* 设置输入框内部间距为10px */
+            margin-bottom: 10px; /* 设置输入框下边距为10px */
+            border-radius: 3px; /* 设置边角为3px的圆角 */
+            border: 1px solid #ddd; /* 定义边框为1px，颜色为淡灰色 */
+        }
+
+        /* 登录按钮的样式 */
+        .login-button {
+            width: 105%; /* 按钮宽度设为100% */
+            height:40%;
+            padding: 10px; /* 设置按钮内部间距为10px */
+            background-color: #4CAF50; /* 设置按钮背景颜色为深绿色 */
+            color: #ffffff; /* 设置按钮文本颜色为白色 */
+            border: none; /* 去除按钮边框 */
+            border-radius: 3px; /* 设置按钮边角为3px的圆角 */
+            cursor: pointer; /* 当鼠标悬停时显示手型光标 */
+        }
+
+        /* 当鼠标悬停在登录按钮上时的样式 */
+        .login-button:hover {
+            background-color: #45a049; /* 将按钮背景颜色设为稍微深一点的绿色 */
+        }
+    </style>
+</head>
+
+<body>
+<!-- 登录表单的主容器 -->
+<div class="login-container">
+    <!-- HTML表单开始。当用户提交表单时，数据将被发送到“/your-login-endpoint” -->
+    <form action="./第一章/first-video.html" method="post">
+        <!-- 用户名输入框。"required"属性意味着此字段必填 -->
+        <input type="text" name="username" placeholder="用户名" class="login-input" required>
+
+        <!-- 密码输入框。"type=password"意味着输入的内容会被遮挡。"required"属性意味着此字段必填 -->
+        <input type="password" name="password" placeholder="密码" class="login-input" required>
+
+        <!-- 登录按钮，点击后会触发表单提交操作 -->
+        <button type="submit" class="login-button">登录</button>
+    </form>
+</div>
+</body>
+
+</html>

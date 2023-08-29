@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<head>
+	<title>反转迷局</title>
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>反转迷局</title>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="reverse.css">
+
+	<script type="text/javascript" src="jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="reverse.js"></script>
+	<style>
+		#skipButton {
+			padding: 10px 20px;
+			background-color: rgba(0, 0, 0, 0.6);
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			outline: none;
+			transition: background-color 0.2s;
+			position: fixed;
+		}
+		#skipButton:hover {
+			background-color: rgba(0, 0, 0, 0.8);
+		}
+		#skipButton {
+			right: 10px;
+			top: 10px;
+		}
+	</style>
+</head>
+
+<body onpageshow='restart();check()' onclick="check()">
+<button id="skipButton">跳过</button>
+	<div class="container">
+		<div class="heading">
+			<h1 class="title">反转迷局</h1>
+			<div class="scoresContainer">
+				<div class="currLevel"></div>
+				<div class="best"></div>
+				<div class="score"></div>
+				<div class="total"></div>
+			</div>
+		</div>
+		<div class="aboveGame">
+			<p class="gameInfo"></p>
+			<a class="reset btn btn-primary">重置此层</a>
+		</div>
+		<div class="board"></div>
+	</div>
+
+	<div id="newLevel" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="cheesyGoodJob"></h4>
+				</div>
+				<div class="modal-body">
+					<p id="levelDescriptor"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal">开始</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+	<div id="restartLevel" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="cheesyGoodJob">重置此层</h4>
+				</div>
+				<div class="modal-body">
+					<p>确定要重置此层吗</p>
+				</div>
+				<div class="modal-footer">
+					<button id="resetLevelConfirm" type="button" class="btn btn-success"
+						data-dismiss="modal">确定</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+	<div class="comments_warp">
+		<div style="width: 500px; margin: auto auto">
+			<!-- JiaThis Button BEGIN -->
+
+
+			<!-- JiaThis Button END -->
+		</div>
+		<script>
+			const skipButton = document.getElementById('skipButton');
+			skipButton.addEventListener('click', function() {
+				window.location.href = "succeed.html";
+			});
+		</script>

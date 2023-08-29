@@ -1,0 +1,20 @@
+#box{text-align:center;
+    margin:0 0;
+    height: 100%;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-attachment: scroll;}
+.pic{width:400px;height: 400px;}
+#nav{ font: 36px/2em 楷体; 
+    margin: 0 auto;
+    width:45%;}
+a{text-decoration:none;color: crimson;}
+a:hover{text-decoration:underline;color:rgb(253, 133, 203);}
+.lastline{ font: 36px/1em 楷体;  }
+.footer{ font: 20px 黑体;}
+.photo{width: 140px;height: 210px; }
+.text{font:24px/1.5em 宋体 italic;
+    width:60%;
+    margin:20px auto;
+    text-align:left;
+    text-indent: 2em;}

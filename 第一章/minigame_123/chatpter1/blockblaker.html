@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Break-Brick</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            background: clear;
+            display: block;
+            margin: 0 auto;
+        }
+
+        body {
+            background-image: url(img/background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        #option_area {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -300px;
+            height: 300px;
+            width: 600px;
+            border-radius: 5%;
+            background-color: rgba(60, 60, 60, 0.2);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border-radius: 25px;
+            box-shadow: inset 0 0 6px rgba(60, 60, 60, 0.2);
+            display: grid;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        @font-face {
+            font-family: mainfont;
+            src: url(font/STXINGKA.TTF);
+        }
+
+        #instruction {
+            margin: auto;
+            padding: 5px 0px;
+            cursor: pointer;
+            width: 100%;
+            display: block;
+            font-size: 25px;
+            font-family: mainfont;
+            align-items: center;
+            width: 550px ;
+            text-indent: 2em;
+        }
+
+        button {
+            margin: auto;
+            background-color: #ffffff00;
+            border: 0px;
+            color: white;
+            padding: 5px 0px;
+            cursor: pointer;
+            width: 100%;
+            display: block;
+            font-size: 40px;
+            font-family: mainfont;
+        }
+
+        button:hover {
+            color: black;
+        }
+        #skipButton {
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.2s;
+            position: fixed;
+            width: 120px;
+        }
+        #skipButton:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        #skipButton {
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<button id="skipButton">跳过</button>
+    <div id="option_area">
+        <div class="blank"></div>
+        <div id = "instruction">
+            <p>军队攻城时，敌军从城墙上丢下一颗反弹球。</p>
+            <p>反弹球威力巨大，雷诺决定用盾牌将反弹球击打回去来攻破城墙。</p>
+            <p>我军共3点生命值，若未能成功击打回去，会造成我军1点伤害。</p>
+            <p>移动鼠标来挪动盾牌，将敌方城墙完全击碎即可取得胜利。</p>
+        </div>
+        <div id = "buttons">
+            <button onclick="draw();document.getElementById('option_area').style.display='none'">开始挑战</button>
+        </div>
+        <div class = "blank"></div>
+    </div>
+    <canvas id = "myCanvas" width = "900" height = "600"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var ballRadius = 10;
+        var x = canvas.width / 2;
+        var y = canvas.height - 30;
+        var dx = 4;
+        var dy = -4;
+        var paddleHeight = 10;
+        var paddleWidth = 150;
+        var paddleX = (canvas.width - paddleWidth) / 2;
+        var rightPressed = false;
+        var leftPressed = false;
+        var brickRowCount = 10;
+        var brickColumnCount = 3;
+        var brickWidth = 75;
+        var brickHeight = 20;
+        var brickPadding = 10;
+        var brickOffsetTop = 30;
+        var brickOffsetLeft = 30;
+        var score = 0;
+        var lives = 3;
+
+        var bricks = [];
+        for (var c = 0; c < brickColumnCount; c++) {
+            bricks[c] = [];
+            for (var r = 0; r < brickRowCount; r++) {
+                bricks[c][r] = { x: 0, y: 0, status: 1 };
+            }
+        }
+
+        document.addEventListener("keydown", keyDownHandler, false);
+        document.addEventListener("keyup", keyUpHandler, false);
+        document.addEventListener("mousemove", mouseMoveHandler, false);
+
+        function keyDownHandler(e) {
+            if (e.code == "ArrowRight") {
+                rightPressed = true;
+            }
+            else if (e.code == 'ArrowLeft') {
+                leftPressed = true;
+            }
+        }
+        function keyUpHandler(e) {
+            if (e.code == 'ArrowRight') {
+                rightPressed = false;
+            }
+            else if (e.code == 'ArrowLeft') {
+                leftPressed = false;
+            }
+        }
+        function mouseMoveHandler(e) {
+            var relativeX = e.clientX - canvas.offsetLeft;
+            if (relativeX > 0 && relativeX < canvas.width) {
+                paddleX = relativeX - paddleWidth / 2;
+            }
+        }
+        function collisionDetection() {
+            for (var c = 0; c < brickColumnCount; c++) {
+                for (var r = 0; r < brickRowCount; r++) {
+                    var b = bricks[c][r];
+                    if (b.status == 1) {
+                        if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                            dy = -dy;
+                            b.status = 0;
+                            score++;
+                            if (score == brickRowCount * brickColumnCount) {
+                                window.location.href = 'success.html';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+            ctx.fillStyle = "red";
+            ctx.fill();
+            ctx.closePath();
+        }
+        function drawPaddle() {
+            ctx.beginPath();
+            ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.closePath();
+        }
+        function drawBricks() {
+            for (var c = 0; c < brickColumnCount; c++) {
+                for (var r = 0; r < brickRowCount; r++) {
+                    if (bricks[c][r].status == 1) {
+                        var brickX = (r * (brickWidth + brickPadding)) + brickOffsetLeft;
+                        var brickY = (c * (brickHeight + brickPadding)) + brickOffsetTop;
+                        bricks[c][r].x = brickX;
+                        bricks[c][r].y = brickY;
+                        ctx.beginPath();
+                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                        ctx.fillStyle = "#654321";
+                        ctx.fill();
+                        ctx.closePath();
+                    }
+                }
+            }
+        }
+        function drawScore() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "red";
+            ctx.fillText("已击碎城墙: " + score, 8, 20);
+        }
+        function drawLives() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "red";
+            ctx.fillText("生命值: " + lives, canvas.width - 65, 20);
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBricks();
+            drawBall();
+            drawPaddle();
+            drawScore();
+            drawLives();
+            collisionDetection();
+
+            if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                dx = -dx;
+            }
+            if (y + dy < ballRadius) {
+                dy = -dy;
+            }
+            else if (y + dy > canvas.height - ballRadius) {
+                if (x > paddleX && x < paddleX + paddleWidth) {
+                    dy = -dy;
+                }
+                else {
+                    lives--;
+                    if (!lives) {
+                        window.location.href = 'fail.html';
+                    }
+                    else {
+                        x = canvas.width / 2;
+                        y = canvas.height - 30;
+                        dx = 4;
+                        dy = -4;
+                        paddleX = (canvas.width - paddleWidth) / 2;
+                    }
+                }
+            }
+
+            if (rightPressed && paddleX < canvas.width - paddleWidth) {
+                paddleX += 7;
+            }
+            else if (leftPressed && paddleX > 0) {
+                paddleX -= 7;
+            }
+
+            x += dx;
+            y += dy;
+            requestAnimationFrame(draw);
+        }
+
+        var player = new Audio("music/bgm/battle.mp3");
+        window.onload = function () {
+            setInterval(function () {
+                if (player.paused) {
+                    player.play();
+                }
+            }, 100);
+            if (!localStorage['volume']) {
+                localStorage.setItem('volume', '60');
+            }
+            player.volume = localStorage['volume'] / 100;
+        }
+        const skipButton = document.getElementById('skipButton');
+        skipButton.addEventListener('click', function() {
+            window.location.href = "success.html";
+        });
+    </script>
+
+</body>
+
+</html>

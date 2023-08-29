@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+}
+a {
+    text-decoration: none;
+}
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: url('../uploads/bg.png') no-repeat 0px 0px;
+    background-size: 100%;
+    -moz-background-size: 100%;
+}
+canvas {
+    margin: 0 auto;
+}
+body div.main div.btns {
+    height: 500px;
+    width: 467px;
+    position: absolute;
+    top: 54%;
+    transform: translate(0, -35%);
+}
+body div.main div.btn {
+    cursor: pointer;
+    height: 100px;
+    width: 700px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 30px;
+    line-height: 108px;
+    margin-top: 0;
+    padding-left: 100px;
+    padding-top: 0;
+    border-color: cornsilk;
+    background-image: url('../uploads/按钮.png');
+    color: aliceblue;
+    border-style: hidden;
+    border-radius: 15px;
+}
+body div.main div.logo {
+    float: right;
+    margin-right: -10px;
+    margin-top: 10px;
+    height: 236px;
+    width: 713px;
+    background: url('../uploads/logo1.png') no-repeat;
+}
+body div.main div.store {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 500px;
+    background-color: #fff;
+    visibility: hidden;
+}
+body div.main div.store div.close {
+    position: absolute;
+    left: 580px;
+    top: -15px;
+    overflow: hidden;
+    color: rgb(129, 129, 158);
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+    background-color: pink;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+body div.main div.store div.head {
+    margin: 20px auto;
+    width: 300px;
+    height: 100px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+    font-size: 32px;
+}
+body div.main div.store div.choices {
+    margin: 20px auto;
+    width: 550px;
+    height: 350px;
+    background-color: #000;
+}
+body div.main div.store div.choices div.choice {
+    float: left;
+    width: 260px;
+    height: 100px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+body div.main div.store div.choices div.choice h4 {
+    float: left;
+    width: 60px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 24px;
+    text-align: center;
+}
+body div.main div.store div.choices div.choice>span h5{
+    float: left;
+    text-align: center;
+    width: 200px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+body div.main div.store div.choices div.choice>span span {
+    float: left;
+    text-align: center;
+    font-size: 14px;
+    width: 200px;
+    margin: 20px auto;
+}
+.wrap div .active1 {
+    transform: rotateY(180deg) !important;
+}
+
+.wrap div .active2 {
+    transform: rotateY(360deg) !important;
+}
+#muteButton, #skipButton {
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s;
+    position: fixed;
+}
+#muteButton:hover, #skipButton:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+#muteButton {
+    right: 10px;
+    bottom: 10px;
+}
+#skipButton {
+    right: 10px;
+    top: 10px;
+}

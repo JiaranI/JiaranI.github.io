@@ -1,0 +1,78 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background: #000;*/
+}
+
+#bgVideo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background: no-repeat;
+    background-size: cover;
+}
+/* ...原先的CSS样式... */
+
+.content {
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-size: 2em;
+}
+.button-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;  /* 使用列布局 */
+    align-items: stretch;    /* 按钮宽度拉伸以填充整个容器 */
+}
+
+.nav-button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;  /* 设置宽度为100% */
+    margin: 40px 0;  /* 上下边距为5px，左右边距为0 */
+}
+
+.nav-button:hover {
+    background-color: #0073a6;
+}
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 140, 186, 0.7);  // 半透明的背景，你可以根据需要调整
+color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 200;  // 保证它显示在其他内容的上面
+}
+
+.back-button:hover {
+    background-color: rgba(0, 115, 166, 0.8);
+}
+
+
+
+
